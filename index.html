@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaplin Bar – Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --green-deep:    #1A2E25;
+    --green-main:    #2D4A3E;
+    --green-light:   #3A5E50;
+    --gold:          #A8892A;
+    --gold-light:    #C4A84E;
+    --gold-bright:   #D4B86A;
+    --cream:         #F5F0E8;
+    --cream-card:    #EDEAE0;
+    --text-dark:     #1A2010;
+    --text-mid:      #4A5C4E;
+    --text-light:    #7A8C7E;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+html { scroll-behavior: smooth; }
+
+/* ── NAVBAR ─────────────────────────────────────────────── */
+.navbar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    background: rgba(26, 46, 37, 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+.nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px 10px 24px;
+}
+
+/* Logo area */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+}
+
+.logo-img-slot {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    background: rgba(201,168,76,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Placeholder film-reel icon inside the logo circle */
+.logo-img-slot svg {
+    width: 26px;
+    height: 26px;
+    opacity: 0.55;
+    fill: var(--gold);
+}
+
+/* When a real logo image is placed here: .logo-img-slot img { width:100%; height:100%; object-fit:cover; } */
+
+.logo-text {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+}
+
+/* Language buttons */
+.lang {
+    display: flex;
+    gap: 6px;
+}
+
+.lang button {
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    background: transparent;
+    color: rgba(245,240,232,0.75);
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    transition: all 0.25s;
+}
+
+.lang button:hover,
+.lang button.active-lang {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--green-deep);
+}
+
+/* ── CATEGORY NAV ───────────────────────────────────────── */
+.nav-bottom {
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 20px 13px 20px;
+    scrollbar-width: none;
+}
+.nav-bottom::-webkit-scrollbar { display: none; }
+
+.nav-inner {
+    display: flex;
+    gap: 8px;
+    margin: 0 auto;
+}
+
+.cat {
+    flex: 0 0 auto;
+    padding: 7px 16px;
+    border-radius: 25px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(255,255,255,0.04);
+    color: rgba(245,240,232,0.7);
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+
+.cat:hover {
+    background: rgba(201,168,76,0.18);
+    color: var(--gold-light);
+    border-color: rgba(201,168,76,0.4);
+}
+
+.cat.active {
+    background: var(--gold);
+    color: var(--green-deep);
+    border-color: var(--gold);
+    box-shadow: 0 3px 12px rgba(201,168,76,0.35);
+    font-weight: 600;
+}
+
+/* ── MAIN ───────────────────────────────────────────────── */
+main {
+    padding-top: 130px;
+    padding-bottom: 60px;
+}
+
+/* ── SECTION ────────────────────────────────────────────── */
+.section {
+    padding: 50px 16px 16px 16px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 34px;
+}
+
+.section-title h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--green-main);
+    display: inline-block;
+    position: relative;
+}
+
+.section-title h2::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 10px auto;
+}
+
+.section-title h2::after {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+    margin: 10px auto 0 auto;
+}
+
+/* ── PRODUCT CARD ───────────────────────────────────────── */
+.product {
+    width: 56%;
+    max-width: 560px;
+    margin: 0 auto 28px auto;
+    background: var(--cream-card);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(26,46,37,0.08);
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(26,46,37,0.14);
+}
+
+.img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    background: var(--green-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Elegant placeholder when no image is loaded */
+.img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, var(--green-deep) 0%, var(--green-light) 100%);
+    opacity: 1;
+}
+
+.img::after {
+    content: "◆";
+    position: absolute;
+    font-size: 28px;
+    color: rgba(201,168,76,0.25);
+    letter-spacing: 6px;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.price {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: var(--gold);
+    color: var(--green-deep);
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    z-index: 2;
+    letter-spacing: 0.02em;
+}
+
+.content {
+    padding: 14px 20px 18px 20px;
+    text-align: center;
+}
+
+.content h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--green-deep);
+    letter-spacing: 0.01em;
+}
+
+.content p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer {
+    text-align: center;
+    padding: 24px 16px;
+    background: var(--green-deep);
+    color: rgba(201,168,76,0.5);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(201,168,76,0.12);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .product {
+        width: 88%;
+        min-width: 260px;
+    }
+    .logo-text { font-size: 19px; }
+    .section-title h2 { font-size: 1.8rem; }
+}
+
+@media (max-width: 420px) {
+    .product { width: 96%; }
+    .nav-top { padding: 10px 14px 8px 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="nav-top">
+        <div class="logo-area" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            <div class="logo-img-slot">
+                <!-- Zëvendëso këtë SVG me një <img src="logo.png"> kur ta kesh logon -->
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="14" fill="none" stroke-width="1.5" stroke="currentColor"/>
+                    <circle cx="16" cy="16" r="6" fill="currentColor"/>
+                    <line x1="16" y1="2" x2="16" y2="8"  stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="16" y1="24" x2="16" y2="30" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="2"  y1="16" x2="8"  y2="16" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="24" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="6"  y1="6"  x2="10" y2="10" stroke="currentColor" stroke-width="1.2"/>
+                    <line x1="22" y1="22" x2="26" y2="26" stroke="currentColor" stroke-width="1.2"/>
+                    <line x1="26" y1="6"  x2="22" y2="10" stroke="currentColor" stroke-width="1.2"/>
+                    <line x1="10" y1="22" x2="6"  y2="26" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+            </div>
+            <div class="logo-text">Chaplin</div>
+        </div>
+        <div class="lang">
+            <button onclick="changeLang('sq')" id="btn-sq">🇦🇱 Shq</button>
+            <button onclick="changeLang('en')" id="btn-en">🇬🇧 Eng</button>
+        </div>
+    </div>
+    <div class="nav-bottom">
+        <div class="nav-inner" id="navCats"></div>
+    </div>
+</div>
+
+<main id="menu"></main>
+
+<footer>
+    &copy; 2026 Chaplin Bar &nbsp;·&nbsp; All rights reserved
+</footer>
+
+<script>
+const categories = [
+    {
+        id: "vodka",
+        sq: { title: "Vodka" },
+        en: { title: "Vodka" },
+        items: [
+            { img: "", price: "250 Lekë", sq: { name: "Absolut Vodka", desc: "" }, en: { name: "Absolut Vodka", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Ketel One", desc: "" }, en: { name: "Ketel One", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Beluga", desc: "" }, en: { name: "Beluga", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Grey Goose", desc: "" }, en: { name: "Grey Goose", desc: "" } }
+        ]
+    },
+    {
+        id: "xhin",
+        sq: { title: "Xhin" },
+        en: { title: "Gin" },
+        items: [
+            { img: "", price: "350 Lekë", sq: { name: "Bombay Sapphire", desc: "" }, en: { name: "Bombay Sapphire", desc: "" } },
+            { img: "", price: "350 Lekë", sq: { name: "Tanqueray", desc: "" }, en: { name: "Tanqueray", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Bulldog", desc: "" }, en: { name: "Bulldog", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Hendrick's", desc: "" }, en: { name: "Hendrick's", desc: "" } },
+            { img: "", price: "800 Lekë", sq: { name: "Monkey 47", desc: "" }, en: { name: "Monkey 47", desc: "" } }
+        ]
+    },
+    {
+        id: "whiskey",
+        sq: { title: "Uiski" },
+        en: { title: "Whiskey" },
+        items: [
+            { img: "", price: "1200 Lekë", sq: { name: "Oban", desc: "" }, en: { name: "Oban", desc: "" } },
+            { img: "", price: "600 Lekë",  sq: { name: "Glenfiddich", desc: "" }, en: { name: "Glenfiddich", desc: "" } },
+            { img: "", price: "700 Lekë",  sq: { name: "Lagavulin", desc: "" }, en: { name: "Lagavulin", desc: "" } },
+            { img: "", price: "400 Lekë",  sq: { name: "Johnnie Walker Black", desc: "" }, en: { name: "Johnnie Walker Black", desc: "" } },
+            { img: "", price: "350 Lekë",  sq: { name: "Jack Daniel's", desc: "" }, en: { name: "Jack Daniel's", desc: "" } },
+            { img: "", price: "400 Lekë",  sq: { name: "Maker's Mark", desc: "" }, en: { name: "Maker's Mark", desc: "" } },
+            { img: "", price: "300 Lekë",  sq: { name: "Jim Beam", desc: "" }, en: { name: "Jim Beam", desc: "" } },
+            { img: "", price: "300 Lekë",  sq: { name: "Jameson", desc: "" }, en: { name: "Jameson", desc: "" } }
+        ]
+    },
+    {
+        id: "konjak",
+        sq: { title: "Konjak" },
+        en: { title: "Cognac" },
+        items: [
+            { img: "", price: "500 Lekë", sq: { name: "Hennessy", desc: "" }, en: { name: "Hennessy", desc: "" } },
+            { img: "", price: "600 Lekë", sq: { name: "Courvoisier", desc: "" }, en: { name: "Courvoisier", desc: "" } },
+            { img: "", price: "450 Lekë", sq: { name: "Metaxa 12", desc: "" }, en: { name: "Metaxa 12", desc: "" } },
+            { img: "", price: "300 Lekë", sq: { name: "Vecchia Romagna", desc: "" }, en: { name: "Vecchia Romagna", desc: "" } }
+        ]
+    },
+    {
+        id: "tequila",
+        sq: { title: "Tekila" },
+        en: { title: "Tequila" },
+        items: [
+            { img: "", price: "600 Lekë", sq: { name: "Patrón Silver", desc: "" }, en: { name: "Patrón Silver", desc: "" } },
+            { img: "", price: "300 Lekë", sq: { name: "Jose Cuervo Silver", desc: "" }, en: { name: "Jose Cuervo Silver", desc: "" } },
+            { img: "", price: "300 Lekë", sq: { name: "Jose Cuervo Gold", desc: "" }, en: { name: "Jose Cuervo Gold", desc: "" } }
+        ]
+    },
+    {
+        id: "rum",
+        sq: { title: "Rum" },
+        en: { title: "Rum" },
+        items: [
+            { img: "", price: "1000 Lekë", sq: { name: "Zacapa", desc: "" }, en: { name: "Zacapa", desc: "" } },
+            { img: "", price: "350 Lekë",  sq: { name: "Robinson", desc: "" }, en: { name: "Robinson", desc: "" } },
+            { img: "", price: "300 Lekë",  sq: { name: "Captain Morgan", desc: "" }, en: { name: "Captain Morgan", desc: "" } },
+            { img: "", price: "300 Lekë",  sq: { name: "Bacardi", desc: "" }, en: { name: "Bacardi", desc: "" } },
+            { img: "", price: "300 Lekë",  sq: { name: "Havana Club", desc: "" }, en: { name: "Havana Club", desc: "" } }
+        ]
+    },
+    {
+        id: "amaro",
+        sq: { title: "Amaro & Likër" },
+        en: { title: "Amaro & Liqueur" },
+        items: [
+            { img: "", price: "300 Lekë", sq: { name: "Amaro del Capo", desc: "" }, en: { name: "Amaro del Capo", desc: "" } },
+            { img: "", price: "300 Lekë", sq: { name: "Amaro Montenegro", desc: "" }, en: { name: "Amaro Montenegro", desc: "" } },
+            { img: "", price: "300 Lekë", sq: { name: "Disaronno", desc: "" }, en: { name: "Disaronno", desc: "" } },
+            { img: "", price: "300 Lekë", sq: { name: "Jägermeister", desc: "" }, en: { name: "Jägermeister", desc: "" } },
+            { img: "", price: "250 Lekë", sq: { name: "Fernet Branca", desc: "" }, en: { name: "Fernet Branca", desc: "" } }
+        ]
+    },
+    {
+        id: "freskuese",
+        sq: { title: "Pijet Freskuese" },
+        en: { title: "Soft Drinks" },
+        items: [
+            { img: "", price: "200 Lekë", sq: { name: "Cola", desc: "" }, en: { name: "Cola", desc: "" } },
+            { img: "", price: "200 Lekë", sq: { name: "Fanta", desc: "" }, en: { name: "Fanta", desc: "" } },
+            { img: "", price: "200 Lekë", sq: { name: "Çaj i Ftohtë", desc: "" }, en: { name: "Iced Tea", desc: "" } },
+            { img: "", price: "200 Lekë", sq: { name: "Bravo", desc: "" }, en: { name: "Bravo Juice", desc: "" } },
+            { img: "", price: "350 Lekë", sq: { name: "Red Bull", desc: "" }, en: { name: "Red Bull", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Rosé", desc: "" }, en: { name: "Rosé", desc: "" } },
+            { img: "", price: "100 Lekë", sq: { name: "Ujë", desc: "" }, en: { name: "Water", desc: "" } }
+        ]
+    },
+    {
+        id: "kafeteria",
+        sq: { title: "Kafeteria" },
+        en: { title: "Coffee & Hot Drinks" },
+        items: [
+            { img: "", price: "120 Lekë", sq: { name: "Kafe Ekspres", desc: "" }, en: { name: "Espresso", desc: "" } },
+            { img: "", price: "200 Lekë", sq: { name: "Kapuçino", desc: "" }, en: { name: "Cappuccino", desc: "" } },
+            { img: "", price: "200 Lekë", sq: { name: "Kakao", desc: "" }, en: { name: "Cocoa", desc: "" } },
+            { img: "", price: "200 Lekë", sq: { name: "Çokollatë e Nxehtë", desc: "" }, en: { name: "Hot Chocolate", desc: "" } },
+            { img: "", price: "150 Lekë", sq: { name: "Freddo Espresso", desc: "" }, en: { name: "Freddo Espresso", desc: "" } },
+            { img: "", price: "200 Lekë", sq: { name: "Freddo Makiato", desc: "" }, en: { name: "Freddo Macchiato", desc: "" } },
+            { img: "", price: "150 Lekë", sq: { name: "Çaj Bio", desc: "" }, en: { name: "Organic Tea", desc: "" } }
+        ]
+    },
+    {
+        id: "cocktail",
+        sq: { title: "Kokteje" },
+        en: { title: "Cocktails" },
+        items: [
+            { img: "", price: "250 Lekë", sq: { name: "Analkoolik", desc: "" }, en: { name: "Non-Alcoholic", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Aperol Spritz", desc: "" }, en: { name: "Aperol Spritz", desc: "" } },
+            { img: "", price: "700 Lekë", sq: { name: "Charlie Chaplin", desc: "" }, en: { name: "Charlie Chaplin", desc: "" } },
+            { img: "", price: "600 Lekë", sq: { name: "Dark Devil", desc: "" }, en: { name: "Dark Devil", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Dirty Martini", desc: "" }, en: { name: "Dirty Martini", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Hugo", desc: "" }, en: { name: "Hugo", desc: "" } },
+            { img: "", price: "450 Lekë", sq: { name: "Long Drink", desc: "" }, en: { name: "Long Drink", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Margarita", desc: "" }, en: { name: "Margarita", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Tequila Sunrise", desc: "" }, en: { name: "Tequila Sunrise", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Vodka Sour", desc: "" }, en: { name: "Vodka Sour", desc: "" } },
+            { img: "", price: "500 Lekë", sq: { name: "Old Fashioned", desc: "" }, en: { name: "Old Fashioned", desc: "" } }
+        ]
+    },
+    {
+        id: "birra",
+        sq: { title: "Birra" },
+        en: { title: "Beers" },
+        items: [
+            { img: "", price: "350 Lekë", sq: { name: "Birra e Gjyshit – IPA", desc: "" }, en: { name: "Birra e Gjyshit – IPA", desc: "" } },
+            { img: "", price: "350 Lekë", sq: { name: "Birra e Gjyshit – Bjondë e Parafinuar", desc: "" }, en: { name: "Birra e Gjyshit – Unfiltered Blonde", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Birra e Gjyshit 500 ml", desc: "" }, en: { name: "Birra e Gjyshit 500 ml", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Chimay", desc: "" }, en: { name: "Chimay", desc: "" } },
+            { img: "", price: "350 Lekë", sq: { name: "Corona", desc: "" }, en: { name: "Corona", desc: "" } },
+            { img: "", price: "400 Lekë", sq: { name: "Franziskaner", desc: "" }, en: { name: "Franziskaner", desc: "" } },
+            { img: "", price: "350 Lekë", sq: { name: "Leffe", desc: "" }, en: { name: "Leffe", desc: "" } },
+            { img: "", price: "250 Lekë", sq: { name: "Stella Artois", desc: "" }, en: { name: "Stella Artois", desc: "" } }
+        ]
+    }
+];
+
+/* ── Language persistence ─────────────────────────────────────────── */
+function getStoredLang() {
+    try { return localStorage.getItem("chaplin_lang"); } catch(e) { return null; }
+}
+function setStoredLang(lang) {
+    try { localStorage.setItem("chaplin_lang", lang); } catch(e) {}
+}
+
+let currentLang = getStoredLang() || "sq";
+let observer;
+let isClickScrolling = false;
+let clickTargetId = null;       // id that was clicked — stays active until scroll fully ends
+let clickScrollTimeout = null;
+let scrollScheduled = false;
+
+/* ── Render ──────────────────────────────────────────────────────── */
+function renderMenu() {
+    const menu = document.getElementById("menu");
+    const nav  = document.getElementById("navCats");
+
+    menu.innerHTML = "";
+    nav.innerHTML  = "";
+
+    // Update language button highlight
+    document.getElementById("btn-sq").classList.toggle("active-lang", currentLang === "sq");
+    document.getElementById("btn-en").classList.toggle("active-lang", currentLang === "en");
+
+    categories.forEach(c => {
+        nav.innerHTML += `<button class="cat" data-id="${c.id}">${c[currentLang].title}</button>`;
+
+        let itemsHtml = "";
+        c.items.forEach(item => {
+            const priceHtml = item.price.trim() !== ""
+                ? `<div class="price">${item.price}</div>`
+                : "";
+            const descHtml = item[currentLang].desc && item[currentLang].desc.trim() !== ""
+                ? `<p>${item[currentLang].desc}</p>`
+                : "";
+            const imgTag = item.img && item.img.trim() !== ""
+                ? `<img src="${item.img}" alt="${item[currentLang].name}" loading="lazy" onerror="this.style.display='none'">`
+                : "";
+
+            itemsHtml += `
+            <div class="product">
+                <div class="img">
+                    ${imgTag}
+                    ${priceHtml}
+                </div>
+                <div class="content">
+                    <h3>${item[currentLang].name}</h3>
+                    ${descHtml}
+                </div>
+            </div>`;
+        });
+
+        menu.innerHTML += `
+        <section class="section" id="${c.id}">
+            <div class="section-title">
+                <h2>${c[currentLang].title}</h2>
+            </div>
+            ${itemsHtml}
+        </section>`;
+    });
+
+    attachNavClickHandlers();
+    initObserver();
+}
+
+/* ── Navigation logic (identical pattern to original) ────────────── */
+function getNavbarHeight() {
+    const nb = document.querySelector(".navbar");
+    return nb ? nb.offsetHeight : 120;
+}
+
+function setActiveButton(id, fromClick = false) {
+    const btn = document.querySelector(`.cat[data-id="${id}"]`);
+    if (!btn || btn.classList.contains("active")) return;
+    document.querySelectorAll(".cat").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    // Only scroll the nav pill into view when it's a direct click action,
+    // not during intermediate scroll-spy updates (which cause visual fighting).
+    if (fromClick) {
+        btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+}
+
+function updateActiveSection() {
+    if (isClickScrolling) return; // locked while click-scroll animation runs
+    const sections = document.querySelectorAll(".section");
+    if (!sections.length) return;
+    const line = getNavbarHeight() + 1;
+    let activeId = sections[0].id;
+    sections.forEach(s => {
+        if (s.getBoundingClientRect().top <= line) activeId = s.id;
+    });
+    setActiveButton(activeId);
+}
+
+function attachNavClickHandlers() {
+    document.querySelectorAll(".cat").forEach(btn => {
+        btn.onclick = () => {
+            const section = document.getElementById(btn.dataset.id);
+            if (!section) return;
+
+            clickTargetId = btn.dataset.id;
+            isClickScrolling = true;
+            clearTimeout(clickScrollTimeout);
+            // Safety-net timeout: long enough for even the longest smooth-scroll
+            clickScrollTimeout = setTimeout(() => {
+                isClickScrolling = false;
+                clickTargetId = null;
+                updateActiveSection();
+            }, 2500);
+
+            // Activate the clicked button immediately and scroll the pill into view
+            setActiveButton(btn.dataset.id, true);
+
+            const y = section.getBoundingClientRect().top + window.scrollY - getNavbarHeight();
+            window.scrollTo({ top: y, behavior: "smooth" });
+        };
+    });
+}
+
+function initObserver() {
+    if (observer) observer.disconnect();
+    const sections = document.querySelectorAll(".section");
+    const nbh = getNavbarHeight();
+    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
+    observer = new IntersectionObserver(() => updateActiveSection(), {
+        rootMargin: `-${nbh}px 0px 0px 0px`,
+        threshold: thresholds
+    });
+    sections.forEach(s => observer.observe(s));
+    updateActiveSection();
+}
+
+function onWindowScroll() {
+    if (scrollScheduled) return;
+    scrollScheduled = true;
+    requestAnimationFrame(() => { updateActiveSection(); scrollScheduled = false; });
+}
+window.addEventListener("scroll", onWindowScroll, { passive: true });
+
+window.addEventListener("scrollend", () => {
+    if (isClickScrolling) {
+        isClickScrolling = false;
+        clearTimeout(clickScrollTimeout);
+        updateActiveSection();
+    }
+});
+
+let resizeTimeout;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(initObserver, 200);
+});
+
+function changeLang(lang) {
+    currentLang = lang;
+    setStoredLang(lang);
+    const pos = window.scrollY;
+    renderMenu();
+    window.scrollTo(0, pos);
+}
+
+window.onload = () => renderMenu();
+</script>
+</body>
+</html>
