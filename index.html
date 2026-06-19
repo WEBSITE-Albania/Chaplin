@@ -62,11 +62,11 @@ html { scroll-behavior: smooth; }
 }
 
 .logo-img-slot {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: 1.5px solid var(--gold);
-    background: rgba(201,168,76,0.08);
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(201,168,76,0.35);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,15 +74,21 @@ html { scroll-behavior: smooth; }
     flex-shrink: 0;
 }
 
-/* Placeholder film-reel icon inside the logo circle */
+/* Placeholder film-reel icon — fshihet kur vendos logon reale */
 .logo-img-slot svg {
     width: 26px;
     height: 26px;
-    opacity: 0.55;
+    opacity: 0.45;
     fill: var(--gold);
 }
 
-/* When a real logo image is placed here: .logo-img-slot img { width:100%; height:100%; object-fit:cover; } */
+/* Logo imazhi — shfaq gjithë foton pa e prerë */
+.logo-img-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
 
 .logo-text {
     font-family: "Cormorant Garamond", serif;
@@ -90,32 +96,6 @@ html { scroll-behavior: smooth; }
     font-weight: 700;
     letter-spacing: 0.06em;
     color: var(--gold);
-}
-
-/* Language buttons */
-.lang {
-    display: flex;
-    gap: 6px;
-}
-
-.lang button {
-    border: 1px solid rgba(201,168,76,0.3);
-    padding: 5px 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    background: transparent;
-    color: rgba(245,240,232,0.75);
-    font-size: 14px;
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    transition: all 0.25s;
-}
-
-.lang button:hover,
-.lang button.active-lang {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--green-deep);
 }
 
 /* ── CATEGORY NAV ───────────────────────────────────────── */
@@ -208,8 +188,8 @@ main {
 
 /* ── PRODUCT CARD ───────────────────────────────────────── */
 .product {
-    width: 56%;
-    max-width: 560px;
+    width: 40vw;
+    max-width: 40vw;
     margin: 0 auto 28px auto;
     background: var(--cream-card);
     border-radius: 18px;
@@ -226,7 +206,7 @@ main {
 
 .img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     position: relative;
     background: var(--green-main);
     display: flex;
@@ -310,16 +290,11 @@ footer {
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .product {
-        width: 88%;
-        min-width: 260px;
-    }
     .logo-text { font-size: 19px; }
     .section-title h2 { font-size: 1.8rem; }
 }
 
 @media (max-width: 420px) {
-    .product { width: 96%; }
     .nav-top { padding: 10px 14px 8px 14px; }
 }
 </style>
@@ -330,25 +305,11 @@ footer {
     <div class="nav-top">
         <div class="logo-area" onclick="window.scrollTo({top:0,behavior:'smooth'})">
             <div class="logo-img-slot">
-                <!-- Zëvendëso këtë SVG me një <img src="logo.png"> kur ta kesh logon -->
-                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="16" cy="16" r="14" fill="none" stroke-width="1.5" stroke="currentColor"/>
-                    <circle cx="16" cy="16" r="6" fill="currentColor"/>
-                    <line x1="16" y1="2" x2="16" y2="8"  stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="16" y1="24" x2="16" y2="30" stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="2"  y1="16" x2="8"  y2="16" stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="24" y1="16" x2="30" y2="16" stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="6"  y1="6"  x2="10" y2="10" stroke="currentColor" stroke-width="1.2"/>
-                    <line x1="22" y1="22" x2="26" y2="26" stroke="currentColor" stroke-width="1.2"/>
-                    <line x1="26" y1="6"  x2="22" y2="10" stroke="currentColor" stroke-width="1.2"/>
-                    <line x1="10" y1="22" x2="6"  y2="26" stroke="currentColor" stroke-width="1.2"/>
-                </svg>
+                <!-- ▼▼▼ LOGO: ndryshо vetëm src-in më poshtë ▼▼▼ -->
+                <img src="logo.jpeg" alt="Chaplin Logo">
+                <!-- ▲▲▲ Vendos këtu shtegun e fotos tënde, p.sh. src="logo.png" ▲▲▲ -->
             </div>
             <div class="logo-text">Chaplin</div>
-        </div>
-        <div class="lang">
-            <button onclick="changeLang('sq')" id="btn-sq">🇦🇱 Shq</button>
-            <button onclick="changeLang('en')" id="btn-en">🇬🇧 Eng</button>
         </div>
     </div>
     <div class="nav-bottom">
@@ -369,10 +330,10 @@ const categories = [
         sq: { title: "Vodka" },
         en: { title: "Vodka" },
         items: [
-            { img: "", price: "250 Lekë", sq: { name: "Absolut Vodka", desc: "" }, en: { name: "Absolut Vodka", desc: "" } },
-            { img: "", price: "400 Lekë", sq: { name: "Ketel One", desc: "" }, en: { name: "Ketel One", desc: "" } },
-            { img: "", price: "500 Lekë", sq: { name: "Beluga", desc: "" }, en: { name: "Beluga", desc: "" } },
-            { img: "", price: "500 Lekë", sq: { name: "Grey Goose", desc: "" }, en: { name: "Grey Goose", desc: "" } }
+            { img: "Foto/Vodka/absolut vodka.jpeg", price: "250 Lekë", sq: { name: "Absolut Vodka", desc: "" }, en: { name: "Absolut Vodka", desc: "" } },
+            { img: "Foto/Vodka/Ketel One.jpeg", price: "400 Lekë", sq: { name: "Ketel One", desc: "" }, en: { name: "Ketel One", desc: "" } },
+            { img: "Foto/Vodka/Beluga.jpeg", price: "500 Lekë", sq: { name: "Beluga", desc: "" }, en: { name: "Beluga", desc: "" } },
+            { img: "Foto/Vodka/Grey Goose.jpeg", price: "500 Lekë", sq: { name: "Grey Goose", desc: "" }, en: { name: "Grey Goose", desc: "" } }
         ]
     },
     {
@@ -380,11 +341,11 @@ const categories = [
         sq: { title: "Xhin" },
         en: { title: "Gin" },
         items: [
-            { img: "", price: "350 Lekë", sq: { name: "Bombay Sapphire", desc: "" }, en: { name: "Bombay Sapphire", desc: "" } },
-            { img: "", price: "350 Lekë", sq: { name: "Tanqueray", desc: "" }, en: { name: "Tanqueray", desc: "" } },
-            { img: "", price: "400 Lekë", sq: { name: "Bulldog", desc: "" }, en: { name: "Bulldog", desc: "" } },
-            { img: "", price: "500 Lekë", sq: { name: "Hendrick's", desc: "" }, en: { name: "Hendrick's", desc: "" } },
-            { img: "", price: "800 Lekë", sq: { name: "Monkey 47", desc: "" }, en: { name: "Monkey 47", desc: "" } }
+            { img: "Foto/Gin/bombay saphire.jpeg", price: "350 Lekë", sq: { name: "Bombay Sapphire", desc: "" }, en: { name: "Bombay Sapphire", desc: "" } },
+            { img: "Foto/Gin/Tanqueray.jpeg", price: "350 Lekë", sq: { name: "Tanqueray", desc: "" }, en: { name: "Tanqueray", desc: "" } },
+            { img: "Foto/Gin/bulldog.jpeg", price: "400 Lekë", sq: { name: "Bulldog", desc: "" }, en: { name: "Bulldog", desc: "" } },
+            { img: "Foto/Gin/Hendrich.jpeg", price: "500 Lekë", sq: { name: "Hendrick's", desc: "" }, en: { name: "Hendrick's", desc: "" } },
+            { img: "Foto/Gin/Monkey 47.jpeg", price: "800 Lekë", sq: { name: "Monkey 47", desc: "" }, en: { name: "Monkey 47", desc: "" } }
         ]
     },
     {
@@ -392,14 +353,14 @@ const categories = [
         sq: { title: "Uiski" },
         en: { title: "Whiskey" },
         items: [
-            { img: "", price: "1200 Lekë", sq: { name: "Oban", desc: "" }, en: { name: "Oban", desc: "" } },
-            { img: "", price: "600 Lekë",  sq: { name: "Glenfiddich", desc: "" }, en: { name: "Glenfiddich", desc: "" } },
-            { img: "", price: "700 Lekë",  sq: { name: "Lagavulin", desc: "" }, en: { name: "Lagavulin", desc: "" } },
-            { img: "", price: "400 Lekë",  sq: { name: "Johnnie Walker Black", desc: "" }, en: { name: "Johnnie Walker Black", desc: "" } },
-            { img: "", price: "350 Lekë",  sq: { name: "Jack Daniel's", desc: "" }, en: { name: "Jack Daniel's", desc: "" } },
-            { img: "", price: "400 Lekë",  sq: { name: "Maker's Mark", desc: "" }, en: { name: "Maker's Mark", desc: "" } },
-            { img: "", price: "300 Lekë",  sq: { name: "Jim Beam", desc: "" }, en: { name: "Jim Beam", desc: "" } },
-            { img: "", price: "300 Lekë",  sq: { name: "Jameson", desc: "" }, en: { name: "Jameson", desc: "" } }
+            { img: "Foto/Whiskey/oban 14.jpeg", price: "1200 Lekë", sq: { name: "Oban", desc: "" }, en: { name: "Oban", desc: "" } },
+            { img: "Foto/Whiskey/glenfiddich.jpeg", price: "600 Lekë",  sq: { name: "Glenfiddich", desc: "" }, en: { name: "Glenfiddich", desc: "" } },
+            { img: "Foto/Whiskey/Lagavulin.jpeg", price: "700 Lekë",  sq: { name: "Lagavulin", desc: "" }, en: { name: "Lagavulin", desc: "" } },
+            { img: "Foto/Whiskey/black label.jpeg", price: "400 Lekë",  sq: { name: "Johnnie Walker Black", desc: "" }, en: { name: "Johnnie Walker Black", desc: "" } },
+            { img: "Foto/Whiskey/jack daniels.jpeg", price: "350 Lekë",  sq: { name: "Jack Daniel's", desc: "" }, en: { name: "Jack Daniel's", desc: "" } },
+            { img: "Foto/Whiskey/maker's mark.jpeg", price: "400 Lekë",  sq: { name: "Maker's Mark", desc: "" }, en: { name: "Maker's Mark", desc: "" } },
+            { img: "Foto/Whiskey/Jim Beam.jpeg", price: "300 Lekë",  sq: { name: "Jim Beam", desc: "" }, en: { name: "Jim Beam", desc: "" } },
+            { img: "Foto/Whiskey/jameson.jpeg", price: "300 Lekë",  sq: { name: "Jameson", desc: "" }, en: { name: "Jameson", desc: "" } }
         ]
     },
     {
@@ -407,10 +368,10 @@ const categories = [
         sq: { title: "Konjak" },
         en: { title: "Cognac" },
         items: [
-            { img: "", price: "500 Lekë", sq: { name: "Hennessy", desc: "" }, en: { name: "Hennessy", desc: "" } },
-            { img: "", price: "600 Lekë", sq: { name: "Courvoisier", desc: "" }, en: { name: "Courvoisier", desc: "" } },
-            { img: "", price: "450 Lekë", sq: { name: "Metaxa 12", desc: "" }, en: { name: "Metaxa 12", desc: "" } },
-            { img: "", price: "300 Lekë", sq: { name: "Vecchia Romagna", desc: "" }, en: { name: "Vecchia Romagna", desc: "" } }
+            { img: "Foto/Cognac/hennesy.jpeg", price: "500 Lekë", sq: { name: "Hennessy", desc: "" }, en: { name: "Hennessy", desc: "" } },
+            { img: "Foto/Cognac/courvoisier.jpeg", price: "600 Lekë", sq: { name: "Courvoisier", desc: "" }, en: { name: "Courvoisier", desc: "" } },
+            { img: "Foto/Cognac/metaxa 12.jpeg", price: "450 Lekë", sq: { name: "Metaxa 12", desc: "" }, en: { name: "Metaxa 12", desc: "" } },
+            { img: "Foto/Cognac/vecchia romagna.jpeg", price: "300 Lekë", sq: { name: "Vecchia Romagna", desc: "" }, en: { name: "Vecchia Romagna", desc: "" } }
         ]
     },
     {
@@ -418,9 +379,9 @@ const categories = [
         sq: { title: "Tekila" },
         en: { title: "Tequila" },
         items: [
-            { img: "", price: "600 Lekë", sq: { name: "Patrón Silver", desc: "" }, en: { name: "Patrón Silver", desc: "" } },
-            { img: "", price: "300 Lekë", sq: { name: "Jose Cuervo Silver", desc: "" }, en: { name: "Jose Cuervo Silver", desc: "" } },
-            { img: "", price: "300 Lekë", sq: { name: "Jose Cuervo Gold", desc: "" }, en: { name: "Jose Cuervo Gold", desc: "" } }
+            { img: "Foto/Tequila/Anejo Patron.jpeg", price: "600 Lekë", sq: { name: "Patrón Silver", desc: "" }, en: { name: "Patrón Silver", desc: "" } },
+            { img: "Foto/Tequila/jose cuervo silver.jpeg", price: "300 Lekë", sq: { name: "Jose Cuervo Silver", desc: "" }, en: { name: "Jose Cuervo Silver", desc: "" } },
+            { img: "Foto/Tequila/jose cuervo gold.jpeg", price: "300 Lekë", sq: { name: "Jose Cuervo Gold", desc: "" }, en: { name: "Jose Cuervo Gold", desc: "" } }
         ]
     },
     {
@@ -428,11 +389,11 @@ const categories = [
         sq: { title: "Rum" },
         en: { title: "Rum" },
         items: [
-            { img: "", price: "1000 Lekë", sq: { name: "Zacapa", desc: "" }, en: { name: "Zacapa", desc: "" } },
-            { img: "", price: "350 Lekë",  sq: { name: "Robinson", desc: "" }, en: { name: "Robinson", desc: "" } },
-            { img: "", price: "300 Lekë",  sq: { name: "Captain Morgan", desc: "" }, en: { name: "Captain Morgan", desc: "" } },
-            { img: "", price: "300 Lekë",  sq: { name: "Bacardi", desc: "" }, en: { name: "Bacardi", desc: "" } },
-            { img: "", price: "300 Lekë",  sq: { name: "Havana Club", desc: "" }, en: { name: "Havana Club", desc: "" } }
+            { img: "Foto/Rum/zacappa.jpeg", price: "1000 Lekë", sq: { name: "Zacapa", desc: "" }, en: { name: "Zacapa", desc: "" } },
+            { img: "Foto/Rum/Robinson.jpeg", price: "350 Lekë",  sq: { name: "Robinson", desc: "" }, en: { name: "Robinson", desc: "" } },
+            { img: "Foto/Rum/Captain Morgan.jpeg", price: "300 Lekë",  sq: { name: "Captain Morgan", desc: "" }, en: { name: "Captain Morgan", desc: "" } },
+            { img: "Foto/Rum/bacardi.jpeg", price: "300 Lekë",  sq: { name: "Bacardi", desc: "" }, en: { name: "Bacardi", desc: "" } },
+            { img: "Foto/Rum/Havana Club.jpeg", price: "300 Lekë",  sq: { name: "Havana Club", desc: "" }, en: { name: "Havana Club", desc: "" } }
         ]
     },
     {
@@ -440,11 +401,11 @@ const categories = [
         sq: { title: "Amaro & Likër" },
         en: { title: "Amaro & Liqueur" },
         items: [
-            { img: "", price: "300 Lekë", sq: { name: "Amaro del Capo", desc: "" }, en: { name: "Amaro del Capo", desc: "" } },
-            { img: "", price: "300 Lekë", sq: { name: "Amaro Montenegro", desc: "" }, en: { name: "Amaro Montenegro", desc: "" } },
-            { img: "", price: "300 Lekë", sq: { name: "Disaronno", desc: "" }, en: { name: "Disaronno", desc: "" } },
-            { img: "", price: "300 Lekë", sq: { name: "Jägermeister", desc: "" }, en: { name: "Jägermeister", desc: "" } },
-            { img: "", price: "250 Lekë", sq: { name: "Fernet Branca", desc: "" }, en: { name: "Fernet Branca", desc: "" } }
+            { img: "Foto/Amaro/vecchio amaro del capo.jpeg", price: "300 Lekë", sq: { name: "Amaro del Capo", desc: "" }, en: { name: "Amaro del Capo", desc: "" } },
+            { img: "Foto/Amaro/amaro montenegro.jpeg", price: "300 Lekë", sq: { name: "Amaro Montenegro", desc: "" }, en: { name: "Amaro Montenegro", desc: "" } },
+            { img: "Foto/Amaro/Disaronno.jpeg", price: "300 Lekë", sq: { name: "Disaronno", desc: "" }, en: { name: "Disaronno", desc: "" } },
+            { img: "Foto/Amaro/jagermeister.jpeg", price: "300 Lekë", sq: { name: "Jägermeister", desc: "" }, en: { name: "Jägermeister", desc: "" } },
+            { img: "Foto/Amaro/fernet branca.jpeg", price: "250 Lekë", sq: { name: "Fernet Branca", desc: "" }, en: { name: "Fernet Branca", desc: "" } }
         ]
     },
     {
@@ -510,18 +471,11 @@ const categories = [
     }
 ];
 
-/* ── Language persistence ─────────────────────────────────────────── */
-function getStoredLang() {
-    try { return localStorage.getItem("chaplin_lang"); } catch(e) { return null; }
-}
-function setStoredLang(lang) {
-    try { localStorage.setItem("chaplin_lang", lang); } catch(e) {}
-}
+const currentLang = "en";
 
-let currentLang = getStoredLang() || "sq";
 let observer;
 let isClickScrolling = false;
-let clickTargetId = null;       // id that was clicked — stays active until scroll fully ends
+let clickTargetId = null;
 let clickScrollTimeout = null;
 let scrollScheduled = false;
 
@@ -532,10 +486,6 @@ function renderMenu() {
 
     menu.innerHTML = "";
     nav.innerHTML  = "";
-
-    // Update language button highlight
-    document.getElementById("btn-sq").classList.toggle("active-lang", currentLang === "sq");
-    document.getElementById("btn-en").classList.toggle("active-lang", currentLang === "en");
 
     categories.forEach(c => {
         nav.innerHTML += `<button class="cat" data-id="${c.id}">${c[currentLang].title}</button>`;
@@ -589,11 +539,13 @@ function setActiveButton(id, fromClick = false) {
     if (!btn || btn.classList.contains("active")) return;
     document.querySelectorAll(".cat").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-    // Only scroll the nav pill into view when it's a direct click action,
-    // not during intermediate scroll-spy updates (which cause visual fighting).
-    if (fromClick) {
-        btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-    }
+    // fromClick → smooth animation so the user sees the pill center nicely.
+    // scroll-spy → "instant" so the nav bar jumps without fighting the page scroll.
+    btn.scrollIntoView({
+        behavior: fromClick ? "smooth" : "instant",
+        inline: "center",
+        block: "nearest"
+    });
 }
 
 function updateActiveSection() {
@@ -666,14 +618,6 @@ window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(initObserver, 200);
 });
-
-function changeLang(lang) {
-    currentLang = lang;
-    setStoredLang(lang);
-    const pos = window.scrollY;
-    renderMenu();
-    window.scrollTo(0, pos);
-}
 
 window.onload = () => renderMenu();
 </script>
